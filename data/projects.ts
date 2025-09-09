@@ -135,4 +135,11 @@ export const projects: Project[] = [
 // Helper function to get preview image URL
 export const getPreviewImageUrl = (project: Project): string => {
   return `https://${project.number}-${project.id}.paarad.org/og.png`;
+};
+
+// Helper function to get a placeholder image URL for testing
+export const getPlaceholderImageUrl = (project: Project): string => {
+  const encodedTitle = encodeURIComponent(project.name);
+  const encodedStack = encodeURIComponent(project.stack);
+  return `https://via.placeholder.com/800x400/1f2937/f3f4f6?text=${encodedTitle}`;
 }; 

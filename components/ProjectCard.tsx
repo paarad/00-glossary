@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { ExternalLink, FileImage } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Project, getPreviewImageUrl } from '@/data/projects';
+import { Project, getPreviewImageUrl, getPlaceholderImageUrl } from '@/data/projects';
 import { useState } from 'react';
 
 interface ProjectCardProps {
@@ -12,7 +12,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const previewImageUrl = getPreviewImageUrl(project);
+  const placeholderImageUrl = getPlaceholderImageUrl(project);
   const [imageError, setImageError] = useState(false);
+  const [useRealImage, setUseRealImage] = useState(true);
 
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -26,13 +28,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="relative h-48 w-full overflow-hidden bg-muted">
           {!imageError ? (
             <Image
-              src={previewImageUrl}
+              src={useRealImage ? previewImageUrl : placeholderImageUrl}
               alt={`${project.name} preview`}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
-              onError={() => setImageError(true)}
+              onError={() => {
+                if (useRealImage) {
+                  setUseRealImage(false); // Try placeholder image first
+                } else {
+                  setImageError(true); // If placeholder also fails, show fallback UI
+                }
+              }}
+              unoptimized={!useRealImage} // Only bypass optimization for placeholder images
             />
           ) : (
             <div className="flex items-center justify-center h-full bg-muted">
