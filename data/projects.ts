@@ -139,7 +139,6 @@ export const getPreviewImageUrl = (project: Project): string => {
 
 // Helper function to get a placeholder image URL for testing
 export const getPlaceholderImageUrl = (project: Project): string => {
-  const encodedTitle = encodeURIComponent(project.name);
-  const encodedStack = encodeURIComponent(project.stack);
-  return `https://via.placeholder.com/800x400/1f2937/f3f4f6?text=${encodedTitle}`;
+  const encodedTitle = encodeURIComponent(`${project.number}. ${project.name}`);
+  return `https://via.placeholder.com/800x400/2563eb/ffffff?text=${encodedTitle}&font=Inter`;
 }; 

@@ -14,7 +14,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const previewImageUrl = getPreviewImageUrl(project);
   const placeholderImageUrl = getPlaceholderImageUrl(project);
   const [imageError, setImageError] = useState(false);
-  const [useRealImage, setUseRealImage] = useState(true);
+  
+  // For now, start with placeholder images since OG images don't exist yet
+  // Change this to true when you have real OG images
+  const [useRealImage, setUseRealImage] = useState(false);
 
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -34,13 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
-              onError={() => {
-                if (useRealImage) {
-                  setUseRealImage(false); // Try placeholder image first
-                } else {
-                  setImageError(true); // If placeholder also fails, show fallback UI
-                }
-              }}
+              onError={() => setImageError(true)}
               unoptimized={!useRealImage} // Only bypass optimization for placeholder images
             />
           ) : (
