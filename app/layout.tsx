@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description: "A visual showcase of 30 projects from the daily coding challenge. Each project features unique functionality built with modern web technologies.",
   keywords: ["coding challenge", "web development", "next.js", "portfolio", "projects"],
   authors: [{ name: "paarad" }],
+  icons: {
+    icon: '/favicon.ico',
+  },
   openGraph: {
     title: "30 Projects Glossary",
     description: "A visual showcase of 30 projects from the daily coding challenge",

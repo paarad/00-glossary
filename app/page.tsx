@@ -20,6 +20,51 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
+        {/* Challenge Explanation */}
+        <section className="mb-12 max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
+            🎯 Objective of the Challenge
+          </h2>
+          
+          <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <p className="text-lg text-muted-foreground mb-6 text-center">
+              The 30-day, 30-project challenge is a personal and public experiment in:
+            </p>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center p-6 bg-card border rounded-lg">
+                <h3 className="text-lg font-semibold mb-3 text-foreground">
+                  🚀 Rapid Prototyping
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Build and launch 1 micro-product per day using AI tools, modern web tech, 
+                  and quick creative ideas — not waiting for perfection.
+                </p>
+              </div>
+              
+              <div className="text-center p-6 bg-card border rounded-lg">
+                <h3 className="text-lg font-semibold mb-3 text-foreground">
+                  🧪 Product Exploration
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Each project explores a unique concept, format, or niche — from meme generators 
+                  to productivity tools, crypto toys to storytelling UIs — to test what sticks.
+                </p>
+              </div>
+              
+              <div className="text-center p-6 bg-card border rounded-lg">
+                <h3 className="text-lg font-semibold mb-3 text-foreground">
+                  📦 Small Scope, Real Output
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Instead of overplanning, the focus is on shippable apps: 1 idea, 1 core feature, 1 live link. 
+                  The challenge proves that shipping often beats shipping big.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
