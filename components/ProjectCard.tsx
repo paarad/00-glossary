@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, FileImage } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Project, getPreviewImageUrl } from '@/data/projects';
+import { useState } from 'react';
 
 interface ProjectCardProps {
   project: Project;
@@ -9,6 +10,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const previewImageUrl = getPreviewImageUrl(project);
+  const [imageError, setImageError] = useState(false);
 
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -20,14 +22,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Preview Image */}
         <div className="relative h-48 w-full overflow-hidden bg-muted">
-          <Image
-            src={previewImageUrl}
-            alt={`${project.name} preview`}
-            fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
-          />
+          {!imageError ? (
+            <Image
+              src={previewImageUrl}
+              alt={`${project.name} preview`}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full bg-muted">
+              <div className="text-center">
+                <FileImage className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
+                <p className="text-sm text-muted-foreground">Preview Coming Soon</p>
+              </div>
+            </div>
+          )}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
           
           {/* External Link Icon */}
