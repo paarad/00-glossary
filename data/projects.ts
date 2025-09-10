@@ -134,7 +134,8 @@ export const projects: Project[] = [
 
 // Helper function to get preview image URL
 export const getPreviewImageUrl = (project: Project): string => {
-  return `https://${project.number}-${project.id}.paarad.org/og.png`;
+  // Use internal screenshot proxy to avoid per-app og.png maintenance
+  return `/api/preview?url=${encodeURIComponent(project.url)}&w=1200`;
 };
 
 // Helper function to get a placeholder image URL for testing

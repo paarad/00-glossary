@@ -29,7 +29,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Preview Image */}
         <div className="relative h-48 w-full overflow-hidden bg-muted">
-          {showPlaceholder || (!useRealImage && !imageError) ? (
+          {showPlaceholder ? (
             // Use simple CSS-based placeholder for reliability
             <div className="flex flex-col items-center justify-center h-full bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
               <div className="text-center px-4">
@@ -38,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <p className="text-blue-100 text-xs">Preview Coming Soon</p>
               </div>
             </div>
-          ) : !imageError && useRealImage ? (
+          ) : !imageError ? (
             <Image
               src={previewImageUrl}
               alt={`${project.name} preview`}
