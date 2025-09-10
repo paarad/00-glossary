@@ -29,16 +29,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Preview Image */}
         <div className="relative h-48 w-full overflow-hidden bg-muted">
-          {!imageError ? (
+          {!imageError && !useRealImage ? (
+            // Use simple CSS-based placeholder for reliability
+            <div className="flex flex-col items-center justify-center h-full bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
+              <div className="text-center px-4">
+                <h3 className="text-2xl font-bold mb-2">{project.number}. {project.name}</h3>
+                <p className="text-blue-200 text-sm mb-1">{project.stack}</p>
+                <p className="text-blue-100 text-xs">Preview Coming Soon</p>
+              </div>
+            </div>
+          ) : !imageError ? (
             <Image
-              src={useRealImage ? previewImageUrl : placeholderImageUrl}
+              src={previewImageUrl}
               alt={`${project.name} preview`}
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
               onError={() => setImageError(true)}
-              unoptimized={!useRealImage} // Only bypass optimization for placeholder images
             />
           ) : (
             <div className="flex items-center justify-center h-full bg-muted">
