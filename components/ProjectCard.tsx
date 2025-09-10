@@ -17,6 +17,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   
   // Switch to real OG images from your deployed projects
   const [useRealImage, setUseRealImage] = useState(true);
+  const [showPlaceholder, setShowPlaceholder] = useState(false);
 
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
@@ -28,7 +29,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Preview Image */}
         <div className="relative h-48 w-full overflow-hidden bg-muted">
-          {!imageError && !useRealImage ? (
+          {showPlaceholder || (!useRealImage && !imageError) ? (
             // Use simple CSS-based placeholder for reliability
             <div className="flex flex-col items-center justify-center h-full bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
               <div className="text-center px-4">
@@ -37,7 +38,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <p className="text-blue-100 text-xs">Preview Coming Soon</p>
               </div>
             </div>
-          ) : !imageError ? (
+          ) : !imageError && useRealImage ? (
             <Image
               src={previewImageUrl}
               alt={`${project.name} preview`}
@@ -45,7 +46,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
-              onError={() => setImageError(true)}
+              onError={() => {
+                console.log(`Failed to load image for ${project.name}, showing placeholder`);
+                setShowPlaceholder(true);
+              }}
             />
           ) : (
             <div className="flex items-center justify-center h-full bg-muted">
