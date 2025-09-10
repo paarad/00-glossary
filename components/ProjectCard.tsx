@@ -15,9 +15,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const placeholderImageUrl = getPlaceholderImageUrl(project);
   const [imageError, setImageError] = useState(false);
   
-  // For now, start with placeholder images since OG images don't exist yet
-  // Change this to true when you have real OG images
-  const [useRealImage, setUseRealImage] = useState(false);
+  // Switch to real OG images from your deployed projects
+  const [useRealImage, setUseRealImage] = useState(true);
 
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
