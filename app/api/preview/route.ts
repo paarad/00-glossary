@@ -12,27 +12,32 @@ export async function GET(req: NextRequest) {
       return new Response('Missing url param', { status: 400 });
     }
 
-    // Provider 1: WordPress mShots (free, decent reliability)
-    const mshotsUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(targetUrl)}?w=${encodeURIComponent(width)}`;
+    // Provider 1: Thum.io (direct image)
+    const thumUrl = `https://image.thum.io/get/width/${encodeURIComponent(width)}/${encodeURIComponent(
+      targetUrl
+    )}`;
 
-    const res = await fetch(mshotsUrl, {
-      // Let the platform cache this request
-      next: { revalidate: 3600 },
-    });
+    let upstream = await fetch(thumUrl, { next: { revalidate: 3600 } });
 
-    if (!res.ok) {
+    // Fallback: WordPress mShots
+    if (!upstream.ok) {
+      const mshotsUrl = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(targetUrl)}?w=${encodeURIComponent(
+        width
+      )}`;
+      upstream = await fetch(mshotsUrl, { next: { revalidate: 3600 } });
+    }
+
+    if (!upstream.ok) {
       return new Response('Failed to capture screenshot', { status: 502 });
     }
 
-    // Pass through the bytes as-is
-    const contentType = res.headers.get('content-type') || 'image/jpeg';
-    const buffer = await res.arrayBuffer();
+    const contentType = upstream.headers.get('content-type') || 'image/jpeg';
+    const buffer = await upstream.arrayBuffer();
 
     return new Response(buffer, {
       status: 200,
       headers: {
         'Content-Type': contentType,
-        // Cache for a day at the CDN, allow stale while we revalidate
         'Cache-Control': 'public, s-maxage=86400, stale-while-revalidate=43200',
       },
     });

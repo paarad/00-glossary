@@ -43,11 +43,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
               src={previewImageUrl}
               alt={`${project.name} preview`}
               fill
+              unoptimized
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
               onError={() => {
-                console.log(`Failed to load image for ${project.name}, showing placeholder`);
                 setShowPlaceholder(true);
               }}
             />
