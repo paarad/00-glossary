@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['paarad.org', 'via.placeholder.com'],
+    domains: ['paarad.org', 'picsum.photos'],
     remotePatterns: [
       {
         protocol: 'https',

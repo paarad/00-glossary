@@ -139,6 +139,15 @@ export const getPreviewImageUrl = (project: Project): string => {
 
 // Helper function to get a placeholder image URL for testing
 export const getPlaceholderImageUrl = (project: Project): string => {
-  const encodedTitle = encodeURIComponent(`${project.number}. ${project.name}`);
-  return `https://via.placeholder.com/800x400/2563eb/ffffff?text=${encodedTitle}&font=Inter`;
+  // Create a data URL with SVG for reliable local placeholder
+  const svg = `<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="400" fill="#2563eb"/>
+    <text x="400" y="180" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="600" 
+          fill="white" text-anchor="middle">${project.number}. ${project.name}</text>
+    <text x="400" y="220" font-family="Inter, Arial, sans-serif" font-size="18" 
+          fill="#93c5fd" text-anchor="middle">${project.stack}</text>
+    <text x="400" y="260" font-family="Inter, Arial, sans-serif" font-size="14" 
+          fill="#dbeafe" text-anchor="middle">Preview Coming Soon</text>
+  </svg>`;
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 }; 
