@@ -161,13 +161,13 @@ export const projects: Project[] = [
         stack: "Next.js, OpenAI",
       },
   
-  // Placeholder projects for the remaining ones (15-30)
+  // Placeholder projects for the remaining ones (20-30)
   // Add your actual projects here as you build them
-  ...Array.from({ length: 21 }, (_, i) => ({
+  ...Array.from({ length: 11 }, (_, i) => ({
     number: String(i + 20).padStart(2, '0'),
     id: `project-${String(i + 20).toLowerCase()}`,
     name: `Project ${i + 20}`,
-    url: `https://${String(i + 15).padStart(2, '0')}-project-${String(i + 20).toLowerCase()}.paarad.org`,
+    url: `https://${String(i + 20).padStart(2, '0')}-project-${String(i + 20).toLowerCase()}.paarad.org`,
     description: `Coming soon - Project ${i + 20}`,
     stack: "Next.js, React, TypeScript"
   }))
