@@ -9,11 +9,9 @@ export default function Home() {
         <div className="container mx-auto px-4 py-10 text-center">
           <div className="flex flex-col items-center space-y-2">
             <h1 className="text-4xl font-bold tracking-tight text-foreground">
-              30 Projects Glossary
+              30 Days - 30 Projects Glossary
             </h1>
-            <p className="text-lg text-muted-foreground">
-              A visual showcase of 30 projects from the daily coding challenge
-            </p>
+
           </div>
         </div>
       </header>
@@ -26,9 +24,7 @@ export default function Home() {
             🎯 Objective of the Challenge
           </h2>
           
-          <p className="text-lg text-muted-foreground mb-8">
-            The 30-day, 30-project challenge is a personal and public experiment in:
-          </p>
+        
           
           <div className="space-y-6 text-left">
             <div>

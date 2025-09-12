@@ -45,7 +45,7 @@ export const projects: Project[] = [
     id: "pfpmask",
     name: "PFPmask",
     url: "https://05-pfpmask.paarad.org",
-    description: "Mask and restyle your PFP without uploading your face.",
+    description: "Chrome Extension. Hide your face on browser video calls by replacing it with a tracked, talking NFT avatar. Local-only. Privacy-first.",
     stack: "Next.js, Tailwind, Image Models",
   },
   {
@@ -61,7 +61,7 @@ export const projects: Project[] = [
     id: "deadticker",
     name: "DeadTicker",
     url: "https://07-deadticker.paarad.org",
-    description: "Track and visualize abandoned or dead crypto tokens.",
+    description: "Twitter bot. Mention the bot with a $TICKER or contract address. It resolves the token, renders a consistent tombstone image",
     stack: "Next.js, Tailwind, Coin Data APIs",
   },
   {
@@ -120,14 +120,54 @@ export const projects: Project[] = [
     description: "Storyboard generator with frame timing, captions, and scenes.",
     stack: "Next.js, Tailwind, OpenAI",
   },
+  {
+    number: "15",
+    id: "youcanforgetnow",
+    name: "youcanforgetnow",
+    url: "https://15-youcanforgetnow.paarad.org",
+    description: "Storyboard generator with frame timing, captions, and scenes.",
+    stack: "Next.js, Tailwind, OpenAI",
+  },
+  {
+    number: "16",
+    id: "moodshift",
+    name: "Moodshift",
+    url: "https://16-moodshift.paarad.org",
+    description: "Storyboard generator with frame timing, captions, and scenes.",
+    stack: "Next.js, Tailwind, OpenAI",
+  },
+  {
+    number: "17",
+    id: "justcook",
+    name: "justcook",
+    url: "https://17-justcook.paarad.org",
+    description: "Storyboard generator with frame timing, captions, and scenes.",
+    stack: "Next.js, Tailwind, OpenAI",
+  },
+  {
+    number: "18",
+    id: "clonetime",
+    name: "Clonetime",
+    url: "https://18-clonetime.paarad.org",
+    description: "Storyboard generator with frame timing, captions, and scenes.",
+    stack: "Next.js, Tailwind, OpenAI",
+  },
+  {
+    number: "19",
+    id: "bizprompt",
+    name: "Bizprompt",
+    url: "https://19-bizprompt.paarad.org",
+    description: "Storyboard generator with frame timing, captions, and scenes.",
+    stack: "Next.js, Tailwind, OpenAI",
+  },
   // Placeholder projects for the remaining ones (15-30)
   // Add your actual projects here as you build them
-  ...Array.from({ length: 16 }, (_, i) => ({
-    number: String(i + 15).padStart(2, '0'),
-    id: `project-${String(i + 15).toLowerCase()}`,
-    name: `Project ${i + 15}`,
-    url: `https://${String(i + 15).padStart(2, '0')}-project-${String(i + 15).toLowerCase()}.paarad.org`,
-    description: `Coming soon - Project ${i + 15}`,
+  ...Array.from({ length: 21 }, (_, i) => ({
+    number: String(i + 20).padStart(2, '0'),
+    id: `project-${String(i + 20).toLowerCase()}`,
+    name: `Project ${i + 20}`,
+    url: `https://${String(i + 15).padStart(2, '0')}-project-${String(i + 20).toLowerCase()}.paarad.org`,
+    description: `Coming soon - Project ${i + 20}`,
     stack: "Next.js, React, TypeScript"
   }))
 ] as const;
