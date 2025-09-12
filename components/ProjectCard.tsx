@@ -1,24 +1,32 @@
 'use client';
 
-import Image from 'next/image';
+import NextImage from 'next/image';
 import { ExternalLink, FileImage } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Project, getPreviewImageUrl, getPlaceholderImageUrl } from '@/data/projects';
-import { useState } from 'react';
+import { Project, getLocalScreenshotUrl } from '@/data/projects';
+import { useMemo, useState } from 'react';
 
 interface ProjectCardProps {
   project: Project;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const previewImageUrl = getPreviewImageUrl(project);
-  const placeholderImageUrl = getPlaceholderImageUrl(project);
-  const [imageError, setImageError] = useState(false);
-  
-  // Switch to real OG images from your deployed projects
-  const [useRealImage, setUseRealImage] = useState(true);
+  const previewImageUrl = getLocalScreenshotUrl(project);
   const [showPlaceholder, setShowPlaceholder] = useState(false);
-
+  const candidates = useMemo(() => {
+    const num = parseInt(project.number, 10);
+    return [
+      `/screenshots/${project.number}-${project.id}.jpg`,
+      `/screenshots/${project.number}-${project.id}.png`,
+      `/screenshots/${num}.png`,
+      `/screenshots/${num}.jpg`,
+      `/screenshots/${project.number}.png`,
+      `/screenshots/${project.number}.jpg`,
+    ];
+  }, [project.id, project.number]);
+  const [candidateIndex, setCandidateIndex] = useState(0);
+  const imgSrc = candidates[candidateIndex] || previewImageUrl;
+  
   return (
     <Card className="group overflow-hidden border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <a 
@@ -28,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         className="block"
       >
         {/* Preview Image */}
-        <div className="relative h-48 w-full overflow-hidden bg-muted">
+        <div className="relative w-full overflow-hidden bg-muted aspect-[1728/958]">
           {showPlaceholder ? (
             // Use simple CSS-based placeholder for reliability
             <div className="flex flex-col items-center justify-center h-full bg-blue-600 text-white transition-transform duration-300 group-hover:scale-105">
@@ -38,9 +46,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <p className="text-blue-100 text-xs">Preview Coming Soon</p>
               </div>
             </div>
-          ) : !imageError ? (
-            <Image
-              src={previewImageUrl}
+          ) : candidateIndex < candidates.length ? (
+            <NextImage
+              src={imgSrc}
               alt={`${project.name} preview`}
               fill
               unoptimized
@@ -48,8 +56,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={parseInt(project.number) <= 6} // Priority loading for first 6 projects
               onError={() => {
-                setShowPlaceholder(true);
+                const nextIndex = candidateIndex + 1;
+                if (nextIndex < candidates.length) {
+                  setCandidateIndex(nextIndex);
+                } else {
+                  setShowPlaceholder(true);
+                }
               }}
+              id={`img-${project.id}`}
             />
           ) : (
             <div className="flex items-center justify-center h-full bg-muted">

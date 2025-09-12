@@ -133,9 +133,9 @@ export const projects: Project[] = [
 ] as const;
 
 // Helper function to get preview image URL
-export const getPreviewImageUrl = (project: Project): string => {
-  // Use internal screenshot proxy to avoid per-app og.png maintenance
-  return `/api/preview?url=${encodeURIComponent(project.url)}&w=1200`;
+export const getLocalScreenshotUrl = (project: Project): string => {
+  // Looks for /public/screenshots/{number}-{id}.jpg (fallback to .png)
+  return `/screenshots/${project.number}-${project.id}.jpg`;
 };
 
 // Helper function to get a placeholder image URL for testing

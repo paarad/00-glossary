@@ -6,8 +6,8 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col space-y-2">
+        <div className="container mx-auto px-4 py-10 text-center">
+          <div className="flex flex-col items-center space-y-2">
             <h1 className="text-4xl font-bold tracking-tight text-foreground">
               30 Projects Glossary
             </h1>
@@ -21,7 +21,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         {/* Challenge Explanation */}
-        <section className="mb-12 max-w-3xl mx-auto text-center">
+        <section className="mb-12 max-w-5xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-foreground mb-6">
             🎯 Objective of the Challenge
           </h2>
@@ -61,7 +61,7 @@ export default function Home() {
         </section>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
           {projects.map((project) => (
             <ProjectCard 
               key={`${project.number}-${project.id}`} 
