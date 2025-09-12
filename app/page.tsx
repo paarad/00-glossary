@@ -69,10 +69,14 @@ export default function Home() {
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>
-            Built with Next.js, TailwindCSS, and shadcn/ui | 
-            <span className="ml-1">
-              {projects.length} projects and counting
-            </span>
+            <a
+              href="https://github.com/paarad/30days30projects"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-foreground"
+            >
+              @github.com/paarad/30days30projects
+            </a>
           </p>
         </footer>
       </main>
