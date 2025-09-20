@@ -160,17 +160,94 @@ export const projects: Project[] = [
         description: "Generate fresh startup ideas instantly based on themes or vibes. Built for makers.",
         stack: "Next.js, OpenAI",
       },
-  
-  // Placeholder projects for the remaining ones (20-30)
-  // Add your actual projects here as you build them
-  ...Array.from({ length: 11 }, (_, i) => ({
-    number: String(i + 20).padStart(2, '0'),
-    id: `project-${String(i + 20).toLowerCase()}`,
-    name: `Project ${i + 20}`,
-    url: `https://${String(i + 20).padStart(2, '0')}-project-${String(i + 20).toLowerCase()}.paarad.org`,
-    description: `Coming soon - Project ${i + 20}`,
-    stack: "Next.js, React, TypeScript"
-  }))
+      {
+        number: "20",
+        id: "mamette",
+        name: "Mamette",
+        url: "https://20-mamette.paarad.org",
+        description: "Generate stunning AI book covers in seconds using just a title, theme, and vibe.",
+        stack: "Next.js, OpenAI (DALL·E), Supabase",
+      },
+      {
+        number: "21",
+        id: "moonlight-reader",
+        name: "Moonlight Reader",
+        url: "https://21-moonlight-reader.paarad.org",
+        description: "Create personalized bedtime audiobooks with celebrity-style or family voiceovers.",
+        stack: "Next.js, OpenAI (TTS), Supabase",
+      },
+      {
+        number: "22",
+        id: "havenmap",
+        name: "Havenmap",
+        url: "https://22-havenmap.paarad.org",
+        description: "AI-scored survival map for locating rural safe zones with resources, remoteness, and low loot risk.",
+        stack: "Next.js, OpenAI, Overpass API, Supabase",
+      },
+      {
+        number: "23",
+        id: "podprompt",
+        name: "PodPrompt",
+        url: "https://23-podprompt.paarad.org",
+        description: "Turn podcast episodes into summaries, tweet threads, and content ideas — all in one click.",
+        stack: "Next.js, OpenAI, Supabase",
+      },
+      {
+        number: "24",
+        id: "trendformer",
+        name: "Trendformer",
+        url: "https://24-trendformer.paarad.org",
+        description: "Find trending topics in your niche and generate viral Twitter threads instantly.",
+        stack: "Next.js, OpenAI, Reddit, Supabase",
+      },
+      {
+        number: "25",
+        id: "dumbgoodies",
+        name: "Dumbgoodies",
+        url: "https://25-dumbgoodies.paarad.org",
+        description: "Upload a logo and get ridiculous merch mockups — funny, cursed, or genius.",
+        stack: "Next.js, OpenAI (Vision), Supabase",
+      },
+      {
+        number: "26",
+        id: "unicornswipe",
+        name: "UnicornSwipe",
+        url: "https://26-unicornswipe.paarad.org",
+        description: "Swipe through absurd or brilliant startup ideas and unlock your founder archetype.",
+        stack: "Next.js, OpenAI, Supabase",
+      },
+      {
+        number: "27",
+        id: "backroom-generator",
+        name: "Backroom Generator",
+        url: "https://27-backroom-generator.paarad.org",
+        description: "Enter a phrase, generate a full creepy 'backroom' level with lore, hazards, and visuals.",
+        stack: "Next.js, OpenAI (GPT-4 + DALL·E), Supabase",
+      },
+      {
+        number: "28",
+        id: "worktales",
+        name: "WorkTales",
+        url: "https://28-worktales.paarad.org",
+        description: "Pick a job — AI writes a short fictional story for TikTok-style narration (60–90s).",
+        stack: "Next.js, OpenAI, Supabase",
+      },
+      {
+        number: "29",
+        id: "beef-arena",
+        name: "Beef Arena",
+        url: "https://29-beef-arena.paarad.org",
+        description: "Cartoon-style celebrity fight generator",
+        stack: "Next.js, nano banana, Supabase",
+      },
+      {
+        number: "30",
+        id: "palace-archive",
+        name: "Palace Archive",
+        url: "https://30-palace-archive.paarad.org",
+        description: "Scrapes and archives Palace Skateboards’ funniest product descriptions.",
+        stack: "Python, Next.js, Supabase, OpenAI",
+      },
 ] as const;
 
 // Helper function to get preview image URL
