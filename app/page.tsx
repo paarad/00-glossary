@@ -11,7 +11,9 @@ export default function Home() {
             <h1 className="text-4xl font-bold tracking-tight text-foreground">
               30 Days - 30 Projects Glossary
             </h1>
-
+            <p className="text-lg text-muted-foreground">
+              Aug 21 to Sept 19
+            </p>
           </div>
         </div>
       </header>
