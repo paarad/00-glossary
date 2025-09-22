@@ -17,15 +17,27 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
   openGraph: {
-    title: "30 Projects Glossary",
-    description: "A visual showcase of 30 projects from the daily coding challenge",
+    title: "30 Days - 30 Projects Glossary",
+    description: "Visual showcase of 30 unique web projects built in 30 days (Aug 21 - Sept 19). From AI tools to meme generators, crypto toys to productivity apps. Built with Next.js, OpenAI, and modern web tech.",
     type: "website",
     locale: "en_US",
+    url: "https://glossary30projects.paarad.org",
+    siteName: "30 Days 30 Projects",
+    images: [
+      {
+        url: "/screenshots/banner.png",
+        width: 1200,
+        height: 630,
+        alt: "30 Days 30 Projects - Daily coding challenge showcase",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "30 Projects Glossary",
-    description: "A visual showcase of 30 projects from the daily coding challenge",
+    title: "30 Days - 30 Projects Glossary",
+    description: "30 unique web projects built in 30 days. AI tools, meme generators, crypto toys & more. Aug 21 - Sept 19 daily coding challenge.",
+    images: ["/screenshots/banner.png"],
+    creator: "@paarad",
   },
 };
 

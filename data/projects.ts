@@ -70,7 +70,7 @@ export const projects: Project[] = [
         name: "Hopium Calculator",
         url: "https://08-hopium-calculator.paarad.org",
         description: "Input your bags. See how delusional your price targets really are.",
-        stack: "Next.js OpenAI",
+        stack: "Next.js, OpenAI",
       },
       {
         number: "09",
