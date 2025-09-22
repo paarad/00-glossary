@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
+        {/* <footer className="mt-16 pt-8 border-t text-center text-sm text-muted-foreground">
           <p>
             <a
               href="https://github.com/paarad/30days30projects"
@@ -80,7 +80,7 @@ export default function Home() {
               @github.com/paarad/30days30projects
             </a>
           </p>
-        </footer>
+        </footer> */}
       </main>
     </div>
   );
